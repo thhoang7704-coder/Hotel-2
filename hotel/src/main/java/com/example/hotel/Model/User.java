@@ -20,11 +20,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "users")
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class User {
+public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

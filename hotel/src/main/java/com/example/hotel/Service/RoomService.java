@@ -1,7 +1,9 @@
 package com.example.hotel.Service;
 
 import java.util.List;
-import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import com.example.hotel.DTO.RoomDTO;
 import com.example.hotel.Model.Room;
@@ -16,4 +18,6 @@ public interface RoomService {
     Room updateRoom(Long id, RoomDTO roomDTO);
 
     Room getRoomById(Long id);
+
+    Page<Room> getAllRoomPaged(Pageable pageable);
 }

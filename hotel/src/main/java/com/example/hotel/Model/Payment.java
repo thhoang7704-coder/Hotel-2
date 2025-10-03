@@ -21,29 +21,16 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "bookingrooms")
+@Table(name = "payments")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookingRoom {
-
+public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "userId")
-    private User user;
-    @JoinColumn(name = "customerId")
-    @ManyToOne
-    private Customer customer;
-    @Column(name = "dayIn")
-    private Date dayIn;
-    @Column(name = "dayOut")
-    private Date dayOut;
-    @Column(name = "Status")
-    private String Status;
-    @Column(name = "sumCost")
-    private double sumCost;
-    @Column(name = "deposit")
-    private double deposit; // tiền cọc
+    @JoinColumn(name = "invoiceId")
+    private Invoice invoice;
+
 }

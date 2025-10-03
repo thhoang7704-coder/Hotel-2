@@ -10,17 +10,25 @@ import lombok.Data;
 @Data
 @Builder
 public class BookingRoomRespone {
-    public Long customerId;
-    public Date dayIn;
-    public Date dayOut;
-    public double deposit;
+    private Long id;
+    private CustomerResponse customerResponse;
+    private UserResponse userResponse;
+    private Date dayIn;
+    private Date dayOut;
+    private double deposit;
+    private String Status;
+    private double sumCost;
 
     public static BookingRoomRespone fromBookingRoom(BookingRoom bookingRoom) {
         BookingRoomRespone bookingRoomRespone = BookingRoomRespone.builder()
-                .customerId(bookingRoom.getCustomerId())
+                .id(bookingRoom.getId())
+                .customerResponse(CustomerResponse.fromCustomer(bookingRoom.getCustomer()))
+                .userResponse(UserResponse.fromUser(bookingRoom.getUser()))
                 .dayIn(bookingRoom.getDayIn())
                 .dayOut(bookingRoom.getDayOut())
                 .deposit(bookingRoom.getDeposit())
+                .Status(bookingRoom.getStatus())
+                .sumCost(bookingRoom.getSumCost())
                 .build();
         return bookingRoomRespone;
     }

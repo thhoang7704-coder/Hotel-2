@@ -1,7 +1,9 @@
 package com.example.hotel.Service;
 
 import java.util.List;
-import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import com.example.hotel.DTO.BookingRoomDTO;
 import com.example.hotel.Model.BookingRoom;
@@ -12,9 +14,11 @@ public interface BookingRoomService {
 
     List<BookingRoom> getAllBookingRooms();
 
-    Optional<BookingRoom> getBookingRoomById(Long id);
+    BookingRoom getBookingRoomById(Long id);
 
     BookingRoom updateBookingRoom(Long id, BookingRoomDTO bookingRoomDTO);
 
     void deleteBookingRoom(Long id);
+
+    Page<BookingRoom> getAllBookingRoomPage(Pageable pageable);
 }

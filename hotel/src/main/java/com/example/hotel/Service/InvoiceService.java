@@ -1,7 +1,9 @@
 package com.example.hotel.Service;
 
 import java.util.List;
-import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import com.example.hotel.DTO.InvoiceDTO;
 import com.example.hotel.Model.Invoice;
@@ -15,5 +17,7 @@ public interface InvoiceService {
 
     Invoice updateInvoice(Long id, InvoiceDTO invoiceDTO) throws Exception;
 
-    Optional<Invoice> getInvoiceById(Long id);
+    Invoice getInvoiceById(Long id);
+
+    Page<Invoice> getAllInvoicePage(Pageable pageable);
 }

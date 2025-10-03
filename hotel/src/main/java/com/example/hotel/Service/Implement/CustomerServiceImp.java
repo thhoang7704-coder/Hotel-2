@@ -3,6 +3,8 @@ package com.example.hotel.Service.Implement;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.hotel.DTO.CustomerDTO;
@@ -54,19 +56,23 @@ public class CustomerServiceImp implements CustomerService {
     @Override
     public Customer updateCustomer(Long id, CustomerDTO customerDTO) throws Exception {
         Customer customer = customerRepository.findById(id).orElseThrow(() -> new RuntimeException("Ko thay id"));
-        Customer.builder()
-                .name(customerDTO.getName())
-                .dob(customerDTO.getDob())
-                .email(customerDTO.getEmail())
-                .identifier(customerDTO.getIdentifier())
-                .build();
-        customerRepository.save(null);
-        return customer;
+        customer.setName(customerDTO.getName());
+        customer.setDob(customerDTO.getDob());
+        customer.setEmail(customerDTO.getEmail());
+        customer.setIdentifier(customerDTO.getIdentifier());
+
+        return customerRepository.save(customer);
+
     }
 
     @Override
     public Customer getCustomerById(Long id) {
         return customerRepository.findById(id).orElseThrow(() -> new RuntimeException("ko thay id"));
+    }
+
+    @Override
+    public Page<Customer> getAllCustomerPage(Pageable pageable) {
+        return customerRepository.findAll(pageable);
     }
 
 }

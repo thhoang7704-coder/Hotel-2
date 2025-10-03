@@ -10,15 +10,25 @@ import lombok.Data;
 @Data
 @Builder
 public class InvoiceRespone {
-    public Long bookingRoomId;
-    public String methodPay;
-    public Date datePayment;
+    private BookingRoomRespone bookingRoomRespone;
+    private Long id;
+    private Long bookingRoomId;
+    private String methodPay;
+    private Date datePayment;
+    private double totalCost;
+    private String status;
+    private String paymentStatus;
 
     public static InvoiceRespone fromInvoice(Invoice invoice) {
         InvoiceRespone invoiceRespone = InvoiceRespone.builder()
-                .bookingRoomId(invoice.getBookingRoomId())
+                .bookingRoomRespone(BookingRoomRespone.fromBookingRoom(invoice.getBookingRoom()))
+                .id(invoice.getId())
+                .bookingRoomId(invoice.getBookingRoom().getId())
                 .methodPay(invoice.getMethodPay())
                 .datePayment(invoice.getDatePayment())
+                .totalCost(invoice.getTotalCost())
+                .status(invoice.getStatus())
+                .paymentStatus(invoice.getPaymentStatus())
                 .build();
         return invoiceRespone;
     }

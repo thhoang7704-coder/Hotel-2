@@ -1,7 +1,9 @@
 package com.example.hotel.Service;
 
 import java.util.List;
-import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import com.example.hotel.DTO.CustomerDTO;
 import com.example.hotel.Model.Customer;
@@ -16,4 +18,6 @@ public interface CustomerService {
     Customer updateCustomer(Long id, CustomerDTO customerDTO) throws Exception;
 
     Customer getCustomerById(Long id);
+
+    Page<Customer> getAllCustomerPage(Pageable pageable);
 }

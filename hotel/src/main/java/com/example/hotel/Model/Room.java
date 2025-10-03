@@ -36,5 +36,5 @@ public class Room {
     @Column(name = "typeRoom")
     private String typeRoom;
     @Column(name = "price")
-    private Double price;
+    private double price;
 }

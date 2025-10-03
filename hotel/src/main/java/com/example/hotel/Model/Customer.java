@@ -1,6 +1,7 @@
 package com.example.hotel.Model;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,7 +31,7 @@ public class Customer {
     @Column(name = "name")
     private String name;
     @Column(name = "dob")
-    private Date dob;
+    private LocalDate dob;
     @Column(name = "email")
     private String email;
     @Column(name = "identifier")
